@@ -1,0 +1,26 @@
+#use prevent default to solve the problem. (browser makes a auto get call hence the connection error)
+
+ex:
+$(document).on("submit", "#regForm", function(e) {
+    e.preventDefault(); #use this in the call
+  
+var form = document.getElementById('regForm');
+var formData = new FormData(form);
+var url = '/sadmin/event_post/?report_type=new_access_request'
+
+$.ajax({
+    url : url,
+    type: "POST",
+    data : formData,
+    processData: false,
+    contentType: false,
+    success:function(){
+       window.location.href="//localhost:8000/"
+    },
+    error: function(jqXHR, textStatus, errorThrown){
+//    	 
+    }
+});
+ 
+
+});
